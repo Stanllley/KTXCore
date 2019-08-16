@@ -27,8 +27,9 @@ inline fun<reified T> Context.getSystemService() : T? = getSystemService(T::clas
 
 inline fun<reified T> Context.getSystemService(serviceName : String) : T? = getSystemService(serviceName) as T
 
-@ColorInt fun Context.getColorById(@ColorRes id: Int) : Int = ContextCompat.getColor(this,id)
+@ColorInt
+inline fun Context.getColorById(@ColorRes id: Int) = ContextCompat.getColor(this,id)
 
-fun Context.getColorStateListById(@ColorRes id: Int) : ColorStateList? = ContextCompat.getColorStateList(this,id)
+inline fun Context.getColorStateListById(@ColorRes id: Int) : ColorStateList? = ContextCompat.getColorStateList(this,id)
 
-fun Context.getDrawableById(@DrawableRes id : Int) : Drawable? = ContextCompat.getDrawable(this,id)
+inline fun Context.getDrawableById(@DrawableRes id : Int) : Drawable? = ContextCompat.getDrawable(this,id)
