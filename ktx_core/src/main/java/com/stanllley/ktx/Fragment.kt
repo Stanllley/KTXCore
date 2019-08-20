@@ -10,6 +10,15 @@ import android.support.v4.app.Fragment
  *@Date 2019/8/14.
  *@Description
  */
-inline fun <reified T : Activity> Fragment.startActivity(reqCode: Int = 0, action: Intent.() -> Unit = {}) {
-    this.activity?.startActivity<T>(reqCode, action)
+inline fun <reified T : Activity> Fragment.startActivity(
+    reqCode: Int = 0,
+    action: Intent.() -> Unit = {}
+) {
+    val intent = Intent(context, T::class.java)
+    action(intent)
+    if (reqCode != 0) {
+        startActivityForResult(intent, reqCode)
+    } else {
+        startActivity(intent)
+    }
 }

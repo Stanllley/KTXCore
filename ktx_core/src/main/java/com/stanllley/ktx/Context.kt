@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE", "EXTENSION_SHADOWED_BY_MEMBER")
+
 package com.stanllley.ktx
 
 import android.app.Activity
@@ -8,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
+import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 
 /**

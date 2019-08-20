@@ -9,7 +9,10 @@ import android.content.Intent
  *@Date 2019/8/14.
  *@Description
  */
-inline fun <reified T : Activity> Activity.startActivity(reqCode: Int = 0, action: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> Activity.startActivity(
+    reqCode: Int = 0,
+    action: Intent.() -> Unit = {}
+) {
     val intent = Intent(this, T::class.java)
     action(intent)
     if (reqCode != 0) {
@@ -19,7 +22,10 @@ inline fun <reified T : Activity> Activity.startActivity(reqCode: Int = 0, actio
     startActivity(intent)
 }
 
-inline fun Activity.setResult(resultCode : Int = Activity.RESULT_OK,action: Intent.() -> Unit = {}){
+inline fun Activity.setResult(
+    resultCode : Int = Activity.RESULT_OK,
+    action: Intent.() -> Unit = {}
+){
     val intent = Intent()
     action(intent)
     setResult(resultCode,intent)

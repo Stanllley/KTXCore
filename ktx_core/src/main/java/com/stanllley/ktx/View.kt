@@ -58,8 +58,26 @@ inline val View.marginEnd: Int
         return if (lp is ViewGroup.MarginLayoutParams) MarginLayoutParamsCompat.getMarginEnd(lp) else 0
     }
 
-inline fun <reified T : Activity> View.startActivity(action: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> View.startActivity(action: Intent.() -> Unit = {}) =
     context.startActivity<T>(action)
+
+inline fun View.postDelayed(
+    delayMillis: Long,
+    crossinline action: () -> Unit
+): Runnable {
+    val runnable = Runnable { action() }
+    postDelayed(runnable, delayMillis)
+    return runnable
+}
+
+@RequiresApi(16)
+inline fun View.postOnAnimationDelayed(
+    delayMillis: Long,
+    crossinline action: () -> Unit
+): Runnable {
+    val runnable = Runnable { action() }
+    postOnAnimationDelayed(runnable, delayMillis)
+    return runnable
 }
 
 inline fun View.doOnPreDraw(crossinline action: (v: View?) -> Unit) {
